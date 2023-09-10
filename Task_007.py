@@ -6,7 +6,7 @@
 русские буквы. """
 
 import os
-import re
+# import re
 
 os.system("cls")
 
@@ -32,8 +32,8 @@ os.system("cls")
 
 text = input("Введите слово на русском или английском языке: ").upper()
 
-en = "qwertyuiopasdfghjklzxcvbnm"
-ru = "ёйцукенгшщзхъфывапролджэячсмитьбю"
+en = "qwertyuiopasdfghjklzxcvbnm".upper()
+ru = "ёйцукенгшщзхъфывапролджэячсмитьбю".upper()
 
 enList = {
     1: "AEIOULNSTR", 
@@ -54,18 +54,19 @@ ruList = {
     10: "ФЩЪ",
 }
 
-if text in en:
+if text[0] in ru:
     sum = 0
     for i in text:
-        for key, value in enList.items():
+        for key, value in ruList.items():
             if i in value:
                 sum += key 
     print(sum)
 
 else:
-    sum = 0
-    for i in text:
-        for key, value in ruList.items():
-            if i in value:
-                sum += key
+    if text[0] in en:
+        sum = 0
+        for i in text:
+            for key, value in enList.items():
+                if i in value:
+                    sum += key
     print(sum)
